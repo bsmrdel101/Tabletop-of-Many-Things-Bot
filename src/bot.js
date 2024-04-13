@@ -11,6 +11,7 @@ const fs = require('fs');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
 
 client.on('ready', () => {
+  if (process.env.DISABLED) return;
   client.commands = new Collection();
   client.buttons = new Collection();
   client.selectMenus = new Collection();

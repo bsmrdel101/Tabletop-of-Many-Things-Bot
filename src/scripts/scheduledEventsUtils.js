@@ -7,7 +7,7 @@ const sendEventReminderMsg = async (client, event) => {
     .setTitle('Reminder')
     .setDescription(`Session today at **${time}**`)
     .setColor(0xc858f5)
-    .setImage(client.user.displayAvatarURL())
+    .setImage('https://media.discordapp.net/attachments/1228786850232012921/1228808148844941392/Evermoon_new.jpg?ex=662d63c4&is=661aeec4&hm=f58e258356fda93e68ad7a74f234625a4fcf8f8ca921198f566cd26c28281d60&=&format=webp&width=901&height=676')
   const channel = client.channels.cache.find((channel) => channel.name === "general");
   channel.send({ content: `@${event.name}`, embeds: [embed] });
 };
