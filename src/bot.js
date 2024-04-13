@@ -13,6 +13,7 @@ client.commands = new Collection();
 client.buttons = new Collection();
 client.selectMenus = new Collection();
 client.commandArray = [];
+require('./events/client/dailyReminder')(client);
 
 const functionFolders = fs.readdirSync('./src/functions');
 functionFolders.forEach((folder) => {
@@ -31,12 +32,7 @@ client.handleComponents();
 client.login(token);
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 const PORT = process.env.PORT || 3000;
-
 server.listen(PORT, () => {
   console.log(`Listening on localhost:${PORT}`);
 });
