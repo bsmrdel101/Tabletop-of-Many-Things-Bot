@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 module.exports = (client) => {
-  tempFn();
+  tempFn(client);
   setInterval(async () => {
     const events = await getEventsForDay(new Date());
 
@@ -14,9 +14,11 @@ module.exports = (client) => {
   }, 24 * 60 * 60 * 1000);
 };
 
-const tempFn = async () => {
+const tempFn = async (client) => {
   const events = await getEventsForDay(new Date());
   console.log(events);
+  console.log(client.channels);
+  console.log('User', client.user);
 };
 
 const getEventsForDay = async (date) => {
