@@ -8,7 +8,7 @@ const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const fs = require('fs');
 
-const client = new Client({ intents: GatewayIntentBits.Guilds });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
 
 client.on('ready', () => {
   client.commands = new Collection();
@@ -37,5 +37,5 @@ client.login(token);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Listening on localhost:${PORT}`);
+  console.log(`Listening on http://localhost:${PORT}`);
 });
