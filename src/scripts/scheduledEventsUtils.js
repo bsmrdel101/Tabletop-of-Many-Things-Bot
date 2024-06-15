@@ -14,7 +14,7 @@ const sendEventReminderMsg = async (client, event) => {
   // const channel = client.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
   const role = guild.roles.cache.find((r) => r.name === event.name);
   // const role = message.guild.roles.cache.find((r) => r.name === event.name);
-  channel.send({ content: `<@&${role}>`, embeds: [embed] });
+  channel.send({ content: `${role}`, embeds: [embed] });
 };
 
 const getEventsForDay = async (date) => {
@@ -37,7 +37,7 @@ const getClosestEventByName = async (name) => {
     headers: { 'Authorization': `Bot ${process.env.token}` }
   });
   const events = await res.json();
-  return events.find((event) => event.name === name);
+  return events.find((event) => event.name.toLowerCase() === name.toLowerCase());
 };
 
 module.exports = {
