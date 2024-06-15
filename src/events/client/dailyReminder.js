@@ -5,8 +5,11 @@ module.exports = (client) => {
   new CronJob('0 6 * * *', async function() {
     const events = await getEventsForDay(new Date());
 
-    events.forEach((event) => {
-      sendEventReminderMsg(client, event);
-    });
+    for (let i = 0; i < events.length; i++) {
+      await sendEventReminderMsg(client, events[i]);
+    }
+    // events.forEach((event) => {
+    //   sendEventReminderMsg(client, event);
+    // });
   }, null, true, 'America/Chicago');
 };
