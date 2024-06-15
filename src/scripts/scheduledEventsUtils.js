@@ -12,7 +12,7 @@ const sendEventReminderMsg = async (client, event) => {
   const guild = client.guilds.cache.get(process.env.guildId);
   const channel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
   // const channel = client.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
-  const role = guild.roles.cache.find((r) => r.name === event.name);
+  const role = guild.roles.cache.find((r) => r.name.toLowerCase() === event.name.toLowerCase());
   // const role = message.guild.roles.cache.find((r) => r.name === event.name);
   channel.send({ content: `${role}`, embeds: [embed] });
 };
@@ -22,7 +22,6 @@ const getEventsForDay = async (date) => {
     headers: { 'Authorization': `Bot ${process.env.token}` }
   });
   const events = await res.json();
-
   const start = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const end = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
 
