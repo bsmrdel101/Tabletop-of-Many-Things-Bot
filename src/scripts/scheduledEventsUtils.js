@@ -9,11 +9,11 @@ const sendEventReminderMsg = async (client, event) => {
     .setDescription(`Session ${sessionDate === new Date() ? 'today' : sessionDate.toLocaleDateString('en-US')} at **${time}**`)
     .setColor(0xc858f5)
     .setThumbnail('https://media.discordapp.net/attachments/1228786850232012921/1228808148844941392/Evermoon_new.jpg?ex=662d63c4&is=661aeec4&hm=f58e258356fda93e68ad7a74f234625a4fcf8f8ca921198f566cd26c28281d60&=&format=webp&width=901&height=676')
-  console.log(event.name, event.name.toLowerCase());
-  const channel = client.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
-  console.log(channel)
-  const role = message.guild.roles.cache.find((r) => r.name === event.name);
-  console.log(role);
+  const guild = client.guilds.cache.get(process.env.guildId);
+  const channel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
+  // const channel = client.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
+  const role = guild.roles.cache.find((r) => r.name === event.name);
+  // const role = message.guild.roles.cache.find((r) => r.name === event.name);
   channel.send({ content: `<@&${role}>`, embeds: [embed] });
 };
 
