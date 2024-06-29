@@ -2,8 +2,7 @@ const fetch = require('node-fetch');
 const { EmbedBuilder } = require('discord.js');
 
 const sendEventReminderMsg = async (client, event) => {
-  // const sessionDate = new Date(event.scheduled_start_time);
-  const sessionDate = new Date(event.time);
+  const sessionDate = new Date(event.scheduled_start_time);
   const time = sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'America/Chicago' });
   const embed = new EmbedBuilder()
     .setTitle('Reminder')
