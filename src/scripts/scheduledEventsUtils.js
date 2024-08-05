@@ -20,12 +20,10 @@ const getEventsForDay = async (date) => {
     headers: { 'Authorization': `Bot ${process.env.token}` }
   });
   const events = await res.json();
-  const start = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  const end = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
-
+  
   return events.filter((event) => {
     const eventDate = new Date(event.scheduled_start_time);
-    return eventDate >= start && eventDate < end;
+    return eventDate.getMonth() === date.getMonth() && eventDate.getDate() === date.getDate();
   });
 };
 
