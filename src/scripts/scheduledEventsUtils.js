@@ -4,11 +4,12 @@ const { EmbedBuilder } = require('discord.js');
 const sendEventReminderMsg = async (client, event) => {
   const sessionDate = new Date(event.scheduled_start_time);
   const time = sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'America/Chicago' });
+  console.log(`https://cdn.discordapp.com/guild-events/${event.id}/${event.image}`);
   const embed = new EmbedBuilder()
     .setTitle('Reminder')
     .setDescription(`Session ${sessionDate === new Date() ? 'today' : sessionDate.toLocaleDateString('en-US')} at **${time}**`)
     .setColor(0xc858f5)
-    .setThumbnail(event.image)
+    .setThumbnail(`https://cdn.discordapp.com/guild-events/${event.id}/${event.image}`)
   const guild = client.guilds.cache.get(process.env.guildId);
   const channel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === event.name.toLowerCase());
   const role = guild.roles.cache.find((r) => r.name.toLowerCase() === event.name.toLowerCase());
