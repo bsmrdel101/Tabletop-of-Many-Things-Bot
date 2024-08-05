@@ -32,6 +32,7 @@ const getClosestEventByName = async (name) => {
     headers: { 'Authorization': `Bot ${process.env.token}` }
   });
   const events = await res.json();
+  console.log('DELETE THIS: ', events);
   return events.find((event) => event.name.toLowerCase() === name.toLowerCase());
 };
 
