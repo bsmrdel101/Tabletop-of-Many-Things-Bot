@@ -23,7 +23,7 @@ const getEventsForDay = async (date) => {
   
   return events.filter((event) => {
     const eventDate = new Date(event.scheduled_start_time);
-    return eventDate.getMonth() === date.getMonth() && eventDate.getDate() === date.getDate();
+    return eventDate.getMonth() === date.getMonth() && eventDate.getDate() - 1 === date.getDate();
   });
 };
 
