@@ -5,8 +5,7 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon .",
-    "deploy": "npx railway up"
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
