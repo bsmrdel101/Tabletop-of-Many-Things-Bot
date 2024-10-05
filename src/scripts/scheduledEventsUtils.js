@@ -10,9 +10,8 @@ const sendEventReminderMsg = async (client, event) => {
     .setColor(0xc858f5)
     .setThumbnail(`https://cdn.discordapp.com/guild-events/${event.id}/${event.image}`)
   const guild = client.guilds.cache.get(process.env.guildId);
-  const { role } = JSON.parse(event.description);
   const channel = guild.channels.cache.find((channel) => channel.name.toLowerCase() === JSON.parse(event.description).channel.toLowerCase());
-  // const role = guild.roles.cache.find((r) => r.name.toLowerCase() === event.name.toLowerCase());
+  const role = guild.roles.cache.find((r) => r.name.toLowerCase() === JSON.parse(event.description).role.toLowerCase());
   channel.send({ content: `${role}`, embeds: [embed] });
 };
 
