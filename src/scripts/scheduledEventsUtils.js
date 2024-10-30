@@ -23,7 +23,8 @@ const getEventsForDay = async (date) => {
   
   return events.filter((event) => {
     const eventDate = new Date(event.scheduled_start_time);
-    return eventDate.getMonth() === date.getMonth() && eventDate.getDate() === date.getDate();
+    const cstDate = new Date(eventDate.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+    return cstDate.getMonth() === date.getMonth() && cstDate.getDate() === date.getDate();
   });
 };
 
