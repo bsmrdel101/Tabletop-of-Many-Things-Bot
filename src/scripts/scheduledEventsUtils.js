@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const { EmbedBuilder } = require('discord.js');
 
 const sendEventReminderMsg = async (client, event) => {
